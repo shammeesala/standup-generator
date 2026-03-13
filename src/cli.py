@@ -18,6 +18,9 @@ def generate(days):
         # 1. Validate environment before doing anything
         Config.validate()
         
+        if Config.GITHUB_TOKEN == "your_github_token_here":
+            raise ValueError("Please replace 'your_github_token_here' with an actual GitHub PAT in the .env file.")
+        
         # 2. Fetch raw data from GitHub
         gh_client = GitHubClient()
         click.echo(f"Initializing Standup Generator for user: {gh_client.username}")
